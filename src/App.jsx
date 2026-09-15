@@ -472,20 +472,22 @@ function App() {
           <div className="hero-content">
             <div className="hero-eyebrow">
               <Sparkles size={16} />
-              Trusted Real Estate Solutions in Lagos
+              Trusted Property Guidance in Lagos
             </div>
 
             <h1>
-              Find a Place
+              Find the Right Property.
               <br />
-              <span>You Can Call Home.</span>
+              <span>
+                Make Your Next Move With Confidence.
+              </span>
             </h1>
 
             <p>
-              Discover carefully selected properties
-              for sale and rent across Lagos.
-              Professional guidance from search to
-              closing.
+              Explore carefully selected properties
+              for sale and rent across Lagos, with
+              direct guidance to help you make a
+              confident property decision.
             </p>
 
             <button
@@ -494,7 +496,7 @@ function App() {
                 scrollToSection('properties')
               }
             >
-              Explore Properties
+              Explore Available Properties
               <ArrowRight size={19} />
             </button>
           </div>
@@ -565,7 +567,7 @@ function App() {
 
             <span>
               <strong>Trusted Service</strong>
-              Professional real estate guidance
+              Personal guidance from search to decision
             </span>
           </div>
 
@@ -573,8 +575,8 @@ function App() {
             <Building2 size={25} />
 
             <span>
-              <strong>Quality Properties</strong>
-              Carefully selected opportunities
+              <strong>Quality Opportunities</strong>
+              Carefully selected property options
             </span>
           </div>
 
@@ -583,7 +585,7 @@ function App() {
 
             <span>
               <strong>Direct Support</strong>
-              Speak directly with our agent
+              Speak directly with our property agent
             </span>
           </div>
         </section>
@@ -599,13 +601,15 @@ function App() {
                 Featured Properties
               </span>
 
-              <h2>Explore Our Properties</h2>
+              <h2>Explore Selected Properties</h2>
             </div>
 
             <p>
               Browse selected homes, apartments and
-              land opportunities available in some
-              of Lagos' most desirable locations.
+              land opportunities across Lagos. When
+              you find something that interests you,
+              speak directly with our agent for
+              availability, pricing and next steps.
             </p>
           </div>
 
@@ -779,12 +783,14 @@ function App() {
               What We Do
             </span>
 
-            <h2>Real Estate Made Simple</h2>
+            <h2>Real Estate Made Simpler</h2>
 
             <p>
-              From finding the right property to making
-              a confident decision, Ukalism Real Estate
-              is here to guide you.
+              Whether you're buying, renting or
+              exploring your next investment, Ukalism
+              Real Estate provides straightforward
+              guidance from your first enquiry to your
+              next property decision.
             </p>
           </div>
 
@@ -797,8 +803,9 @@ function App() {
               <h3>Property Search</h3>
 
               <p>
-                Find suitable properties based on your
-                location, budget and lifestyle needs.
+                Tell us your preferred location,
+                property type and budget, and we'll
+                help you identify suitable options.
               </p>
             </div>
 
@@ -810,9 +817,9 @@ function App() {
               <h3>Property Sales</h3>
 
               <p>
-                Explore property opportunities and
-                receive guidance throughout the buying
-                process.
+                Explore available properties and
+                receive direct guidance as you evaluate
+                your purchase options.
               </p>
             </div>
 
@@ -824,8 +831,9 @@ function App() {
               <h3>Property Rentals</h3>
 
               <p>
-                Discover comfortable residential spaces
-                available for rent across Lagos.
+                Find residential rental opportunities
+                that fit your location, lifestyle and
+                budget.
               </p>
             </div>
 
@@ -837,9 +845,9 @@ function App() {
               <h3>Real Estate Guidance</h3>
 
               <p>
-                Get direct professional support when
-                evaluating your next property
-                opportunity.
+                Have questions about a property or
+                your next move? Speak directly with our
+                agent for practical guidance.
               </p>
             </div>
           </div>
@@ -863,28 +871,31 @@ function App() {
             </span>
 
             <h2>
-              More Than Properties...
+              More Than Properties.
               <br />
-              We Build Futures.
+              We Help You Move Forward.
             </h2>
 
             <p>
-              Ukalism Real Estate helps individuals and
-              families find property opportunities that
-              match their goals. Our approach is built
-              around trust, transparency and personal
-              service.
+              Ukalism Real Estate helps individuals,
+              families and property seekers discover
+              opportunities that match their goals in
+              Lagos. We believe real estate decisions
+              should be clear, personal and
+              well-informed, which is why we provide
+              direct support throughout the process.
             </p>
 
             <div className="about-checks">
               <div>
                 <Check size={17} />
-                Trusted and professional service
+                Professional and personal service
               </div>
 
               <div>
                 <Check size={17} />
-                Carefully selected properties
+                Property options selected with your
+                needs in mind
               </div>
 
               <div>
@@ -897,7 +908,7 @@ function App() {
               className="outline-button"
               onClick={() => sendWhatsApp()}
             >
-              Speak With Our Agent
+              Speak With Our Property Agent
               <ArrowRight size={18} />
             </button>
           </div>
@@ -914,12 +925,14 @@ function App() {
             </span>
 
             <h2>
-              Ready to Make Your Next Move?
+              Ready to Find Your Next Property?
             </h2>
 
             <p>
-              Tell us what you're looking for and let's
-              help you find the right property.
+              Tell us what you're looking for, where
+              you want to be and your preferred budget.
+              Let's help you take the next step with
+              confidence.
             </p>
           </div>
 
@@ -927,7 +940,7 @@ function App() {
             className="cta-button"
             onClick={() => sendWhatsApp()}
           >
-            Contact Ukalism
+            Contact Our Agent
             <ArrowRight size={19} />
           </button>
         </section>
@@ -952,8 +965,8 @@ function App() {
             </button>
 
             <p>
-              Trusted Real Estate Solutions in Lagos,
-              Nigeria.
+              Property guidance and real estate
+              opportunities across Lagos, Nigeria.
             </p>
           </div>
 
@@ -980,7 +993,8 @@ function App() {
           </span>
 
           <span>
-            More Than Properties... We Build Futures.
+            More Than Properties. We Help You Move
+            Forward.
           </span>
         </div>
       </footer>

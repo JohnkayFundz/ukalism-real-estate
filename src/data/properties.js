@@ -16,15 +16,15 @@ const properties = [
       'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1600&q=90',
     ],
     description:
-      'A beautiful luxury detached duplex in one of Lagos most desirable residential neighbourhoods. This property offers generous living spaces, modern finishes and a comfortable environment for families looking for premium living in Lekki.',
+      'A premium residential property concept designed for families seeking generous living spaces, contemporary finishes and a comfortable environment in Lekki Phase 1. This demonstration listing showcases the type of property information Ukalism Real Estate can present to prospective clients.',
     features: [
       'Detached duplex',
       '4 spacious bedrooms',
       '5 bathrooms',
       'Large living and dining areas',
-      'Modern kitchen',
+      'Modern fitted kitchen',
       'Private parking space',
-      'Secure residential neighbourhood',
+      'Secure residential environment',
       '450 sqm land size',
     ],
   },
@@ -46,15 +46,15 @@ const properties = [
       'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90',
     ],
     description:
-      'A stylish modern apartment in Ikoyi designed for comfortable city living. The apartment combines contemporary interiors with a prime location close to major business, lifestyle and leisure destinations.',
+      'A contemporary apartment concept for clients looking for comfortable city living in Ikoyi. The demonstration listing highlights modern interiors, practical living spaces and a convenient location close to business, lifestyle and leisure destinations.',
     features: [
       '3 spacious bedrooms',
       '3 bathrooms',
       'Modern fitted kitchen',
       'Spacious living room',
       'Contemporary finishes',
-      'Secure environment',
-      'Convenient Ikoyi location',
+      'Secure residential environment',
+      'Prime Ikoyi location',
       '220 sqm',
     ],
   },
@@ -75,7 +75,7 @@ const properties = [
       'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=90',
     ],
     description:
-      'A premium residential land opportunity in Sangotedo, Lagos. Suitable for buyers looking to build a family home or secure land in a developing and increasingly popular part of Lagos.',
+      'A residential land demonstration listing in Sangotedo for buyers considering future development or long-term property investment. The listing illustrates how Ukalism Real Estate can present land opportunities and guide prospective buyers through their next enquiry.',
     features: [
       '600 sqm residential land',
       'Suitable for residential development',
