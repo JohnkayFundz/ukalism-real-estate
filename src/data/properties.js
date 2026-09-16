@@ -1,4 +1,6 @@
-const properties = [
+import { supabase } from '../lib/supabase'
+
+const fallbackProperties = [
   {
     id: 1,
     title: 'Luxury 4-Bedroom Detached Duplex',
@@ -28,7 +30,6 @@ const properties = [
       '450 sqm land size',
     ],
   },
-
   {
     id: 2,
     title: 'Modern 3-Bedroom Apartment',
@@ -58,7 +59,6 @@ const properties = [
       '220 sqm',
     ],
   },
-
   {
     id: 3,
     title: 'Premium Residential Land',
@@ -86,5 +86,20 @@ const properties = [
     ],
   },
 ]
+
+let properties = fallbackProperties
+
+try {
+  const { data, error } = await supabase
+    .from('properties')
+    .select('*')
+    .order('id', { ascending: true })
+
+  if (!error && Array.isArray(data) && data.length) {
+    properties = data
+  }
+} catch (error) {
+  console.warn('Using local property fallback:', error)
+}
 
 export default properties
