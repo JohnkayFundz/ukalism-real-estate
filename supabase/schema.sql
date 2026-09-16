@@ -26,6 +26,11 @@ add column if not exists video_url text;
 
 alter table public.properties enable row level security;
 
+-- PostgREST also needs table privileges in addition to RLS policies.
+grant select on table public.properties to anon, authenticated;
+grant insert, update, delete on table public.properties to authenticated;
+grant usage, select on sequence public.properties_id_seq to authenticated;
+
 -- Public visitors can read published listings.
 drop policy if exists "Public can read properties" on public.properties;
 create policy "Public can read properties"
