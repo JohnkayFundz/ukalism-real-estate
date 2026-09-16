@@ -5,13 +5,15 @@ import App from './App.jsx'
 import './premium.css'
 import AdminPage from './admin/AdminPage.jsx'
 import Autos from './Autos.jsx'
+import AutosAdmin from './admin/AutosAdmin.jsx'
 
 const pathname = window.location.pathname
+const isAutosAdminRoute = pathname === '/admin/autos' || pathname.startsWith('/admin/autos/')
 const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/')
 const isAutosRoute = pathname === '/autos' || pathname.startsWith('/autos/')
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {isAdminRoute ? <AdminPage /> : isAutosRoute ? <Autos /> : <App />}
+    {isAutosAdminRoute ? <AutosAdmin /> : isAdminRoute ? <AdminPage /> : isAutosRoute ? <Autos /> : <App />}
   </StrictMode>,
 )
