@@ -17,6 +17,7 @@ const fallbackProperties = [
       'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90',
       'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1600&q=90',
     ],
+    video_url: null,
     description:
       'A premium residential property concept designed for families seeking generous living spaces, contemporary finishes and a comfortable environment in Lekki Phase 1. This demonstration listing showcases the type of property information Ukalism Real Estate can present to prospective clients.',
     features: [
@@ -46,6 +47,7 @@ const fallbackProperties = [
       'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1600&q=90',
       'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90',
     ],
+    video_url: null,
     description:
       'A contemporary apartment concept for clients looking for comfortable city living in Ikoyi. The demonstration listing highlights modern interiors, practical living spaces and a convenient location close to business, lifestyle and leisure destinations.',
     features: [
@@ -74,6 +76,7 @@ const fallbackProperties = [
       'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=90',
       'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=90',
     ],
+    video_url: null,
     description:
       'A residential land demonstration listing in Sangotedo for buyers considering future development or long-term property investment. The listing illustrates how Ukalism Real Estate can present land opportunities and guide prospective buyers through their next enquiry.',
     features: [
