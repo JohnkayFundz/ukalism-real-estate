@@ -22,6 +22,7 @@ const emptyForm = {
   baths: '',
   area: '',
   images: '',
+  videoUrl: '',
   description: '',
   features: '',
 }
@@ -39,6 +40,7 @@ const rowToForm = (property) => ({
   baths: property.baths ?? '',
   area: property.area || '',
   images: toLines(property.images),
+  videoUrl: property.video_url || '',
   description: property.description || '',
   features: toLines(property.features),
 })
@@ -53,9 +55,10 @@ const formToRow = (form) => ({
   baths: form.baths === '' ? null : Number(form.baths),
   area: form.area.trim(),
   images: form.images
-    .split(/\n|,/) 
+    .split(/\n|,/)
     .map((item) => item.trim())
     .filter(Boolean),
+  video_url: form.videoUrl.trim() || null,
   description: form.description.trim(),
   features: form.features
     .split('\n')
@@ -396,6 +399,17 @@ function AdminPage() {
           <label>
             Image URLs
             <textarea rows="4" value={form.images} onChange={(e) => updateField('images', e.target.value)} placeholder="One image URL per line" />
+          </label>
+
+          <label>
+            Property video URL
+            <input
+              type="url"
+              value={form.videoUrl}
+              onChange={(e) => updateField('videoUrl', e.target.value)}
+              placeholder="https://..."
+            />
+            <small>Optional. Add a hosted property tour video URL. Leave blank if no video is available.</small>
           </label>
 
           <label>
