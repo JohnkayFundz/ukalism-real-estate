@@ -1,4 +1,5 @@
 import { LayoutDashboard } from 'lucide-react'
+import './AdminShortcut.css'
 
 function AdminShortcut() {
   return (
