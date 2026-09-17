@@ -1,0 +1,41 @@
+.admin-shortcut {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 1200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid rgba(199, 155, 85, 0.55);
+  border-radius: 999px;
+  background: #08231b;
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(8, 35, 27, 0.22);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.admin-shortcut:hover {
+  transform: translateY(-2px);
+  background: #123c32;
+  box-shadow: 0 16px 34px rgba(8, 35, 27, 0.28);
+}
+
+.admin-shortcut:focus-visible {
+  outline: 3px solid rgba(199, 155, 85, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .admin-shortcut {
+    left: 14px;
+    bottom: 14px;
+    min-height: 42px;
+    padding: 0 13px;
+    font-size: 12px;
+  }
+}
