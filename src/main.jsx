@@ -9,7 +9,6 @@ import AdminPage from './admin/AdminPage.jsx'
 import Autos from './AutosLive.jsx'
 import AutosAdmin from './admin/AutosAdmin.jsx'
 import FloatingEnquiry from './components/FloatingEnquiry.jsx'
-import AdminShortcut from './components/AdminShortcut.jsx'
 
 const pathname = window.location.pathname
 const isAutosAdminRoute = pathname === '/admin/autos' || pathname.startsWith('/admin/autos/')
@@ -29,7 +28,6 @@ createRoot(document.getElementById('root')).render(
       <>
         <App />
         {isPublicPropertyRoute && <FloatingEnquiry />}
-        {isPublicPropertyRoute && <AdminShortcut />}
       </>
     )}
   </StrictMode>,
