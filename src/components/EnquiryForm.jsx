@@ -23,21 +23,36 @@ function EnquiryForm({ listingType, listingId, listingTitle, compact = false }) 
     }
 
     setStatus('submitting')
-    const { error: insertError } = await supabase.from('enquiries').insert({
-      listing_type: listingType,
-      listing_id: Number(listingId),
-      listing_title: listingTitle,
-      name: form.name.trim(),
-      phone: form.phone.trim(),
-      email: form.email.trim() || null,
-      message: form.message.trim(),
-    })
 
-    if (insertError) {
+    const { data: enquiry, error: insertError } = await supabase
+      .from('enquiries')
+      .insert({
+        listing_type: listingType,
+        listing_id: Number(listingId),
+        listing_title: listingTitle,
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim() || null,
+        message: form.message.trim(),
+      })
+      .select('id')
+      .single()
+
+    if (insertError || !enquiry?.id) {
       console.error(insertError)
       setError('We could not submit your enquiry. Please try again or contact the agent directly.')
       setStatus('idle')
       return
+    }
+
+    // CRM sync is deliberately handled server-side so no HubSpot secret reaches the browser.
+    // A successful Supabase insert remains a valid lead even if CRM sync is temporarily unavailable.
+    const { error: syncError } = await supabase.functions.invoke('sync-enquiry', {
+      body: { enquiry_id: enquiry.id },
+    })
+
+    if (syncError) {
+      console.warn('HubSpot sync was not completed:', syncError)
     }
 
     setForm(initialForm)
