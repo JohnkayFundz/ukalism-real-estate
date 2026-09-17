@@ -15,7 +15,8 @@ import {
   Sparkles,
   X,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { supabase } from './lib/supabase'
 import properties from './data/properties'
 import './App.css'
 
@@ -37,6 +38,23 @@ function App() {
   const [propertyType, setPropertyType] = useState('Any Property')
   const [listingType, setListingType] = useState('All')
   const [currentImage, setCurrentImage] = useState(0)
+  const [autos, setAutos] = useState([])
+  const [autosLoading, setAutosLoading] = useState(true)
+
+  useEffect(() => {
+    let active = true
+    supabase
+      .from('vehicles')
+      .select('id,title,make,model,year,condition,price,location,mileage,transmission,fuel_type,body_type,images')
+      .order('id', { ascending: false })
+      .limit(3)
+      .then(({ data }) => {
+        if (!active) return
+        setAutos(data || [])
+        setAutosLoading(false)
+      })
+    return () => { active = false }
+  }, [])
 
   const openProperty = (property) => {
     setSelectedProperty(property)
@@ -329,6 +347,39 @@ function App() {
             </div>
           ) : (
             <div className="no-results"><Search size={30} /><h3>No properties found</h3><p>Try changing the location, property type or listing filter.</p><button className="outline-button" onClick={clearFilters}>Clear Filters</button></div>
+          )}
+        </section>
+
+        <section className="section home-autos-section" id="featured-autos">
+          <div className="section-heading">
+            <div><span className="section-eyebrow">Featured Autos</span><h2>Selected Vehicle Opportunities</h2></div>
+            <p>Explore vehicles currently published by Ukalism Properties & Autos. New vehicles added through the private admin portal appear here automatically.</p>
+          </div>
+
+          {autosLoading ? (
+            <div className="home-autos-grid" aria-label="Loading vehicle inventory">
+              {[1, 2, 3].map((item) => <div className="home-auto-card home-auto-skeleton" key={item}><div /><span /><strong /><small /></div>)}
+            </div>
+          ) : autos.length ? (
+            <div className="home-autos-grid">
+              {autos.map((vehicle) => (
+                <article className="home-auto-card" key={vehicle.id}>
+                  <div className="home-auto-image">
+                    {vehicle.images?.[0] ? <img src={vehicle.images[0]} alt={vehicle.title} loading="lazy" /> : <CarFront size={42} />}
+                    <span>{vehicle.condition || 'Available'}</span>
+                  </div>
+                  <div className="home-auto-body">
+                    <div className="home-auto-meta"><span>{vehicle.year}</span><span>{vehicle.body_type}</span></div>
+                    <h3>{vehicle.title}</h3>
+                    <div className="home-auto-location"><MapPin size={14} />{vehicle.location}</div>
+                    <strong className="home-auto-price">{vehicle.price}</strong>
+                    <button className="outline-button home-auto-button" onClick={openAutos}>View Vehicle <ArrowRight size={16} /></button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="no-results home-autos-empty"><CarFront size={30} /><h3>Vehicle inventory coming soon</h3><p>Our latest vehicle opportunities will appear here as they are published.</p><button className="outline-button" onClick={openAutos}>Explore Autos <ArrowRight size={16} /></button></div>
           )}
         </section>
 
