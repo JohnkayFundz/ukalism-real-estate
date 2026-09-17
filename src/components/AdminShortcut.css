@@ -1,8 +1,14 @@
-.admin-shortcut {
+.admin-shortcuts {
   position: fixed;
   left: 22px;
   bottom: 22px;
   z-index: 1200;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-shortcut {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -16,6 +22,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.01em;
+  text-decoration: none;
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
@@ -25,17 +32,29 @@
   box-shadow: 0 16px 34px rgba(8, 35, 27, 0.28);
 }
 
+.admin-shortcut-secondary {
+  background: #ffffff;
+  color: #123c32;
+}
+
 .admin-shortcut:focus-visible {
   outline: 3px solid rgba(199, 155, 85, 0.35);
   outline-offset: 3px;
 }
 
 @media (max-width: 760px) {
-  .admin-shortcut {
+  .admin-shortcuts {
     left: 14px;
+    right: 14px;
     bottom: 14px;
+    justify-content: stretch;
+  }
+
+  .admin-shortcut {
+    flex: 1;
+    justify-content: center;
     min-height: 42px;
-    padding: 0 13px;
-    font-size: 12px;
+    padding: 0 10px;
+    font-size: 11px;
   }
 }
