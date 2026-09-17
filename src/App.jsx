@@ -96,8 +96,8 @@ function App() {
 
   const sendWhatsApp = (property = null) => {
     const message = property
-      ? `Hello Ukalism Real Estate, I am interested in the ${property.title} in ${property.location}. Please provide more information.`
-      : 'Hello Ukalism Real Estate, I would like to enquire about your available properties.'
+      ? `Hello Ukalism Properties & Autos, I am interested in the ${property.title} in ${property.location}. Please provide more information.`
+      : 'Hello Ukalism Properties & Autos, I would like to enquire about your available properties.'
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
     window.open(url, '_blank')
   }
@@ -110,7 +110,7 @@ function App() {
         <header className="property-navbar">
           <button className="back-brand" onClick={closeProperty}>
             <span className="brand-mark">U</span>
-            <span><strong>UKALISM</strong><small>REAL ESTATE</small></span>
+            <span><strong>UKALISM</strong><small>PROPERTIES & AUTOS</small></span>
           </button>
           <button className="details-back" onClick={closeProperty}>
             <ArrowLeft size={18} /> Back to Properties
@@ -198,7 +198,7 @@ function App() {
                 <div className="inspection-card">
                   <div className="inspection-icon"><ShieldCheck size={25} /></div>
                   <h3>Interested in this property?</h3>
-                  <p>Speak directly with Ukalism Real Estate to request more information or arrange a property inspection.</p>
+                  <p>Speak directly with Ukalism Properties & Autos to request more information or arrange a property inspection.</p>
                   <button className="details-whatsapp" onClick={() => sendWhatsApp(selectedProperty)}>WhatsApp Agent <ArrowRight size={18} /></button>
                   <a className="details-call" href="tel:+2349041367161"><Phone size={18} />Call Agent</a>
                 </div>
@@ -216,7 +216,7 @@ function App() {
         <div className="nav-container">
           <button className="brand" onClick={() => scrollToSection('home')}>
             <span className="brand-mark">U</span>
-            <span className="brand-text"><strong>UKALISM</strong><small>REAL ESTATE</small></span>
+            <span className="brand-text"><strong>UKALISM</strong><small>PROPERTIES & AUTOS</small></span>
           </button>
 
           <nav className={menuOpen ? 'nav-links open' : 'nav-links'}>
@@ -301,7 +301,7 @@ function App() {
         </section>
 
         <section className="section services-section" id="services">
-          <div className="section-heading centered"><span className="section-eyebrow">What We Do</span><h2>Real Estate Made Simpler</h2><p>Whether you're buying, renting or exploring your next investment, Ukalism Real Estate provides straightforward guidance from your first enquiry to your next property decision.</p></div>
+          <div className="section-heading centered"><span className="section-eyebrow">What We Do</span><h2>Real Estate Made Simpler</h2><p>Whether you're buying, renting or exploring your next investment, Ukalism Properties & Autos provides straightforward guidance from your first enquiry to your next property decision.</p></div>
           <div className="services-grid">
             <div className="service-card"><div className="service-icon"><Search size={23} /></div><h3>Property Search</h3><p>Tell us your preferred location, property type and budget, and we'll help you identify suitable options.</p></div>
             <div className="service-card"><div className="service-icon"><Building2 size={23} /></div><h3>Property Sales</h3><p>Explore available properties and receive direct guidance as you evaluate your purchase options.</p></div>
@@ -315,7 +315,7 @@ function App() {
           <div className="about-content">
             <span className="section-eyebrow">About Ukalism</span>
             <h2>More Than Properties.<br />We Help You Move Forward.</h2>
-            <p>Ukalism Real Estate helps individuals, families and property seekers discover opportunities that match their goals in Lagos. We believe real estate decisions should be clear, personal and well-informed, which is why we provide direct support throughout the process.</p>
+            <p>Ukalism Properties & Autos helps individuals, families and property seekers discover opportunities that match their goals in Lagos. We believe property and vehicle decisions should be clear, personal and well-informed, which is why we provide direct support throughout the process.</p>
             <div className="about-checks">
               <div><Check size={17} />Professional and personal service</div>
               <div><Check size={17} />Property options selected with your needs in mind</div>
@@ -334,8 +334,8 @@ function App() {
       <footer className="footer">
         <div className="footer-main">
           <div className="footer-brand">
-            <button className="brand" onClick={() => scrollToSection('home')}><span className="brand-mark">U</span><span className="brand-text"><strong>UKALISM</strong><small>REAL ESTATE</small></span></button>
-            <p>Property guidance and real estate opportunities across Lagos, Nigeria.</p>
+            <button className="brand" onClick={() => scrollToSection('home')}><span className="brand-mark">U</span><span className="brand-text"><strong>UKALISM</strong><small>PROPERTIES & AUTOS</small></span></button>
+            <p>Property and vehicle opportunities across Lagos, Nigeria.</p>
           </div>
           <div className="footer-contact">
             <h4>Contact</h4>
@@ -344,7 +344,7 @@ function App() {
             <span>Lagos, Nigeria</span>
           </div>
         </div>
-        <div className="footer-bottom"><span>© {new Date().getFullYear()} Ukalism Real Estate.</span><span>More Than Properties. We Help You Move Forward.</span></div>
+        <div className="footer-bottom"><span>© {new Date().getFullYear()} Ukalism Properties & Autos.</span><span>More Than Properties. We Help You Move Forward.</span></div>
       </footer>
     </div>
   )
