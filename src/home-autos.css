@@ -1,0 +1,23 @@
+.home-autos-section { background: var(--cream, #faf9f5); }
+.home-autos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.home-auto-card { overflow: hidden; border: 1px solid var(--border, #e3e1da); border-radius: 22px; background: #fff; box-shadow: var(--shadow-sm, 0 8px 24px rgba(18,60,50,.08)); transition: transform .25s ease, box-shadow .25s ease; }
+.home-auto-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md, 0 18px 45px rgba(18,60,50,.12)); }
+.home-auto-image { position: relative; height: 240px; display: grid; place-items: center; overflow: hidden; background: #eef1ee; color: var(--green-800, #174b3e); }
+.home-auto-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.home-auto-card:hover .home-auto-image img { transform: scale(1.04); }
+.home-auto-image span { position: absolute; top: 14px; left: 14px; padding: 7px 10px; border-radius: 999px; background: rgba(15,23,42,.82); color: #fff; font-size: 12px; font-weight: 700; }
+.home-auto-body { padding: 20px; }
+.home-auto-meta { display: flex; gap: 10px; color: var(--gold-700, #8b6a38); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.home-auto-body h3 { margin: 8px 0 7px; font-size: 22px; color: var(--text-dark, #17201d); }
+.home-auto-location { display: flex; align-items: center; gap: 6px; color: var(--text, #5f6965); font-size: 14px; }
+.home-auto-price { display: block; margin: 15px 0; color: var(--green-900, #123c32); font-size: 22px; }
+.home-auto-button { width: 100%; justify-content: center; }
+.home-autos-empty { margin-top: 10px; }
+.home-auto-skeleton { padding-bottom: 20px; }
+.home-auto-skeleton > div { height: 240px; background: linear-gradient(90deg, #eef1ee 25%, #f7f8f6 50%, #eef1ee 75%); background-size: 200% 100%; animation: home-auto-shimmer 1.4s infinite; }
+.home-auto-skeleton > span, .home-auto-skeleton > strong, .home-auto-skeleton > small { display: block; height: 12px; margin: 18px 20px 0; border-radius: 999px; background: #eef1ee; }
+.home-auto-skeleton > strong { width: 55%; height: 20px; }
+.home-auto-skeleton > small { width: 35%; }
+@keyframes home-auto-shimmer { to { background-position: -200% 0; } }
+@media (max-width: 900px) { .home-autos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .home-autos-grid { grid-template-columns: 1fr; } .home-auto-image { height: 220px; } }
