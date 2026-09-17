@@ -6,22 +6,26 @@ import './premium.css'
 import './luxury.css'
 import './autos-refinement.css'
 import AdminPage from './admin/AdminPage.jsx'
+import AdminDashboard from './admin/AdminDashboard.jsx'
 import Autos from './AutosLive.jsx'
 import AutosAdmin from './admin/AutosAdmin.jsx'
 import FloatingEnquiry from './components/FloatingEnquiry.jsx'
 
 const pathname = window.location.pathname
 const isAutosAdminRoute = pathname === '/admin/autos' || pathname.startsWith('/admin/autos/')
-const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/')
+const isPropertyAdminRoute = pathname === '/admin/properties' || pathname.startsWith('/admin/properties/')
+const isAdminRoute = pathname === '/admin'
 const isAutosRoute = pathname === '/autos' || pathname.startsWith('/autos/')
-const isPublicPropertyRoute = !isAdminRoute && !isAutosRoute && !isAutosAdminRoute
+const isPublicPropertyRoute = !isAdminRoute && !isPropertyAdminRoute && !isAutosAdminRoute && !isAutosRoute
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {isAutosAdminRoute ? (
       <AutosAdmin />
-    ) : isAdminRoute ? (
+    ) : isPropertyAdminRoute ? (
       <AdminPage />
+    ) : isAdminRoute ? (
+      <AdminDashboard />
     ) : isAutosRoute ? (
       <Autos />
     ) : (
