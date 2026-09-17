@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CheckCircle2, Loader2, Send } from 'lucide-react'
-import { supabaseAnonKey, supabaseConfigError, supabaseUrl } from '../lib/supabase'
+import { supabase, supabaseConfigError } from '../lib/supabase'
 import './EnquiryForm.css'
 
 const initialForm = { name: '', phone: '', email: '', message: '' }
@@ -31,13 +31,8 @@ function EnquiryForm({ listingType, listingId, listingTitle, compact = false }) 
     setStatus('submitting')
 
     try {
-      const response = await fetch(`${supabaseUrl}/functions/v1/sync-enquiry`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          apikey: supabaseAnonKey,
-        },
-        body: JSON.stringify({
+      const { data: payload, error: functionError } = await supabase.functions.invoke('sync-enquiry', {
+        body: {
           listing_type: listingType,
           listing_id: Number(listingId),
           listing_title: listingTitle,
@@ -45,13 +40,15 @@ function EnquiryForm({ listingType, listingId, listingTitle, compact = false }) 
           phone: form.phone.trim(),
           email: form.email.trim() || null,
           message: form.message.trim(),
-        }),
+        },
       })
 
-      const payload = await response.json().catch(() => ({}))
+      if (functionError) {
+        throw new Error(functionError.message || 'Enquiry request failed')
+      }
 
-      if (!response.ok || !payload.success) {
-        throw new Error(payload.error || `Enquiry request failed with status ${response.status}`)
+      if (!payload?.success) {
+        throw new Error(payload?.error || 'Enquiry request failed')
       }
 
       setForm(initialForm)
