@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from './lib/supabase'
 import properties from './data/properties'
 import './App.css'
+import './home-autos.css'
 
 const WHATSAPP_NUMBER = '2349041367161'
 
