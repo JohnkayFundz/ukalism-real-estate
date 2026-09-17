@@ -36,7 +36,6 @@ function EnquiryForm({ listingType, listingId, listingTitle, compact = false }) 
         headers: {
           'Content-Type': 'application/json',
           apikey: supabaseAnonKey,
-          Authorization: `Bearer ${supabaseAnonKey}`,
         },
         body: JSON.stringify({
           listing_type: listingType,
