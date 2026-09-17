@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BedDouble,
   Building2,
+  CarFront,
   Check,
   ChevronDown,
   Home,
@@ -48,6 +49,11 @@ function App() {
     setSelectedProperty(null)
     setCurrentImage(0)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const openAutos = () => {
+    setMenuOpen(false)
+    window.location.href = '/autos'
   }
 
   const getImages = (property) => {
@@ -222,6 +228,7 @@ function App() {
           <nav className={menuOpen ? 'nav-links open' : 'nav-links'}>
             <button onClick={() => scrollToSection('home')}>Home</button>
             <button onClick={() => scrollToSection('properties')}>Properties</button>
+            <button onClick={openAutos}>Autos</button>
             <button onClick={() => scrollToSection('services')}>Services</button>
             <button onClick={() => scrollToSection('about')}>About</button>
             <button onClick={() => scrollToSection('contact')}>Contact</button>
@@ -238,10 +245,13 @@ function App() {
         <section className="hero" id="home">
           <div className="hero-overlay" />
           <div className="hero-content">
-            <div className="hero-eyebrow"><Sparkles size={16} />Trusted Property Guidance in Lagos</div>
-            <h1>Find the Right Property.<br /><span>Make Your Next Move With Confidence.</span></h1>
-            <p>Explore carefully selected properties for sale and rent across Lagos, with direct guidance to help you make a confident property decision.</p>
-            <button className="hero-button" onClick={() => scrollToSection('properties')}>Explore Available Properties <ArrowRight size={19} /></button>
+            <div className="hero-eyebrow"><Sparkles size={16} />Property & Vehicle Opportunities in Lagos</div>
+            <h1>Find the Right Property.<br /><span>Or Your Next Vehicle. Move With Confidence.</span></h1>
+            <p>Explore carefully selected properties for sale and rent, plus vehicle opportunities across Lagos. Get direct support to help you make a confident decision.</p>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <button className="hero-button" onClick={() => scrollToSection('properties')}>Explore Properties <ArrowRight size={19} /></button>
+              <button className="hero-button" onClick={openAutos}>Explore Autos <CarFront size={19} /></button>
+            </div>
           </div>
           <div className="hero-search">
             <div className="search-field"><MapPin size={19} /><div><label>Location</label><select value={location} onChange={(event) => setLocation(event.target.value)}><option>Any Location</option><option>Lekki</option><option>Ikoyi</option><option>Sangotedo</option></select></div><ChevronDown size={16} /></div>
@@ -254,7 +264,29 @@ function App() {
         <section className="trust-strip">
           <div><ShieldCheck size={25} /><span><strong>Trusted Service</strong>Personal guidance from search to decision</span></div>
           <div><Building2 size={25} /><span><strong>Quality Opportunities</strong>Carefully selected property options</span></div>
-          <div><Phone size={25} /><span><strong>Direct Support</strong>Speak directly with our property agent</span></div>
+          <div><Phone size={25} /><span><strong>Direct Support</strong>Speak directly with our property and vehicle team</span></div>
+        </section>
+
+        <section className="section services-section" id="opportunities">
+          <div className="section-heading centered">
+            <span className="section-eyebrow">Explore Ukalism</span>
+            <h2>Properties & Autos, In One Place</h2>
+            <p>Whether you're looking for a home, land or a vehicle, start with the opportunity that matches what you need.</p>
+          </div>
+          <div className="services-grid">
+            <button className="service-card" onClick={() => scrollToSection('properties')} style={{ textAlign: 'left', cursor: 'pointer' }}>
+              <div className="service-icon"><Building2 size={23} /></div>
+              <h3>Explore Properties</h3>
+              <p>Browse selected homes, apartments and land opportunities for sale and rent across Lagos.</p>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', marginTop: '12px', fontWeight: 600 }}>View Properties <ArrowRight size={16} /></span>
+            </button>
+            <button className="service-card" onClick={openAutos} style={{ textAlign: 'left', cursor: 'pointer' }}>
+              <div className="service-icon"><CarFront size={23} /></div>
+              <h3>Explore Autos</h3>
+              <p>Discover available vehicle opportunities with details on condition, mileage, price and location.</p>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', marginTop: '12px', fontWeight: 600 }}>View Autos <ArrowRight size={16} /></span>
+            </button>
+          </div>
         </section>
 
         <section className="section properties-section" id="properties">
@@ -301,12 +333,12 @@ function App() {
         </section>
 
         <section className="section services-section" id="services">
-          <div className="section-heading centered"><span className="section-eyebrow">What We Do</span><h2>Real Estate Made Simpler</h2><p>Whether you're buying, renting or exploring your next investment, Ukalism Properties & Autos provides straightforward guidance from your first enquiry to your next property decision.</p></div>
+          <div className="section-heading centered"><span className="section-eyebrow">What We Do</span><h2>Real Estate & Vehicle Support Made Simpler</h2><p>Whether you're buying, renting or exploring your next vehicle opportunity, Ukalism Properties & Autos provides straightforward guidance from your first enquiry to your next decision.</p></div>
           <div className="services-grid">
             <div className="service-card"><div className="service-icon"><Search size={23} /></div><h3>Property Search</h3><p>Tell us your preferred location, property type and budget, and we'll help you identify suitable options.</p></div>
             <div className="service-card"><div className="service-icon"><Building2 size={23} /></div><h3>Property Sales</h3><p>Explore available properties and receive direct guidance as you evaluate your purchase options.</p></div>
             <div className="service-card"><div className="service-icon"><Home size={23} /></div><h3>Property Rentals</h3><p>Find residential rental opportunities that fit your location, lifestyle and budget.</p></div>
-            <div className="service-card"><div className="service-icon"><ShieldCheck size={23} /></div><h3>Real Estate Guidance</h3><p>Have questions about a property or your next move? Speak directly with our agent for practical guidance.</p></div>
+            <div className="service-card"><div className="service-icon"><CarFront size={23} /></div><h3>Vehicle Opportunities</h3><p>Explore available autos with key details and speak directly with the team about your preferred vehicle.</p></div>
           </div>
         </section>
 
@@ -315,19 +347,22 @@ function App() {
           <div className="about-content">
             <span className="section-eyebrow">About Ukalism</span>
             <h2>More Than Properties.<br />We Help You Move Forward.</h2>
-            <p>Ukalism Properties & Autos helps individuals, families and property seekers discover opportunities that match their goals in Lagos. We believe property and vehicle decisions should be clear, personal and well-informed, which is why we provide direct support throughout the process.</p>
+            <p>Ukalism Properties & Autos helps individuals, families and buyers discover property and vehicle opportunities that match their goals in Lagos. We believe important purchase decisions should be clear, personal and well-informed, which is why we provide direct support throughout the process.</p>
             <div className="about-checks">
               <div><Check size={17} />Professional and personal service</div>
-              <div><Check size={17} />Property options selected with your needs in mind</div>
+              <div><Check size={17} />Opportunities selected with your needs in mind</div>
               <div><Check size={17} />Direct client support</div>
             </div>
-            <button className="outline-button" onClick={() => sendWhatsApp()}>Speak With Our Property Agent <ArrowRight size={18} /></button>
+            <button className="outline-button" onClick={() => sendWhatsApp()}>Speak With Our Team <ArrowRight size={18} /></button>
           </div>
         </section>
 
         <section className="cta-section" id="contact">
-          <div><span className="section-eyebrow">Let's Find Your Next Property</span><h2>Ready to Find Your Next Property?</h2><p>Tell us what you're looking for, where you want to be and your preferred budget. Let's help you take the next step with confidence.</p></div>
-          <button className="cta-button" onClick={() => sendWhatsApp()}>Contact Our Agent <ArrowRight size={19} /></button>
+          <div><span className="section-eyebrow">Let's Find Your Next Opportunity</span><h2>Looking for a Property or Vehicle?</h2><p>Tell us what you're looking for, where you want to be and your preferred budget. Let's help you take the next step with confidence.</p></div>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <button className="cta-button" onClick={() => scrollToSection('properties')}>View Properties <ArrowRight size={19} /></button>
+            <button className="cta-button" onClick={openAutos}>View Autos <CarFront size={19} /></button>
+          </div>
         </section>
       </main>
 
