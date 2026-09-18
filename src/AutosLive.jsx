@@ -253,7 +253,7 @@ function AutosLive() {
                 {visibleAutos.map((vehicle, index) => (
                   <article className="auto-card" key={vehicle.id}>
                     <button className="auto-image" onClick={() => openVehicle(vehicle)} aria-label={`View ${vehicle.title}`}>
-                      {vehicle.images?.length > 0 && <img src={vehicle.images[vehicle.images.length - 1]} alt={vehicle.title} loading={index < 3 ? 'eager' : 'lazy'} />}
+                      {vehicle.images?.length > 0 && <img src={vehicle.cover_image || vehicle.images[vehicle.images.length - 1]} alt={vehicle.title} loading={index < 3 ? 'eager' : 'lazy'} />}
                       <span>{vehicle.condition || 'Verified Listing'}</span>
                       {index === 0 && <em className="featured-badge">Featured</em>}
                     </button>
