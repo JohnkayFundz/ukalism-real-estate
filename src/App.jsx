@@ -117,7 +117,7 @@ function App() {
   const filteredProperties = properties.filter((property) => {
     const locationMatches =
       location === 'Any Location' ||
-      property.location.toLowerCase().includes(location.toLowerCase())
+      String(property.location || '').toLowerCase().includes(location.toLowerCase())
     const propertyMatches = propertyType === 'Any Property' || property.category === propertyType
     const listingMatches = listingType === 'All' || property.type === listingType
     return locationMatches && propertyMatches && listingMatches
@@ -233,7 +233,7 @@ function App() {
                 <section className="details-section">
                   <h2>Property Features</h2>
                   <div className="feature-grid">
-                    {selectedProperty.features.map((feature) => (
+                    {(selectedProperty.features || []).map((feature) => (
                       <div className="feature-item" key={feature}><Check size={17} /><span>{feature}</span></div>
                     ))}
                   </div>
