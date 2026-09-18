@@ -363,10 +363,10 @@ function App() {
             </div>
           ) : autos.length ? (
             <div className="home-autos-grid">
-              {autos.map((vehicle) => (
+              {autos.map((vehicle) => { const coverImage = vehicle.images?.length ? vehicle.images[vehicle.images.length - 1] : null; return (
                 <article className="home-auto-card" key={vehicle.id}>
                   <div className="home-auto-image">
-                    {vehicle.images?.[0] ? <img src={vehicle.images[0]} alt={vehicle.title} loading="lazy" /> : <CarFront size={42} />}
+                    {coverImage ? <img src={coverImage} alt={vehicle.title} loading="lazy" /> : <CarFront size={42} />}
                     <span>{vehicle.condition || 'Available'}</span>
                   </div>
                   <div className="home-auto-body">
@@ -377,7 +377,7 @@ function App() {
                     <button className="outline-button home-auto-button" onClick={openAutos}>View Vehicle <ArrowRight size={16} /></button>
                   </div>
                 </article>
-              ))}
+              )})}
             </div>
           ) : (
             <div className="no-results home-autos-empty"><CarFront size={30} /><h3>Vehicle inventory coming soon</h3><p>Our latest vehicle opportunities will appear here as they are published.</p><button className="outline-button" onClick={openAutos}>Explore Autos <ArrowRight size={16} /></button></div>
