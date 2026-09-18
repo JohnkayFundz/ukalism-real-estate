@@ -17,7 +17,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { supabase } from './lib/supabase'
-import properties from './data/properties'
+import fallbackProperties from './data/properties'
 import './App.css'
 import './home-autos.css'
 
@@ -41,6 +41,26 @@ function App() {
   const [currentImage, setCurrentImage] = useState(0)
   const [autos, setAutos] = useState([])
   const [autosLoading, setAutosLoading] = useState(true)
+  const [properties, setProperties] = useState(fallbackProperties)
+  const [propertiesLoading, setPropertiesLoading] = useState(true)
+
+  useEffect(() => {
+    let active = true
+    supabase
+      .from('properties')
+      .select('*')
+      .eq('is_demo', false)
+      .order('id', { ascending: false })
+      .then(({ data, error }) => {
+        if (!active) return
+        if (!error && Array.isArray(data)) setProperties(data)
+        setPropertiesLoading(false)
+      })
+      .catch(() => {
+        if (active) setPropertiesLoading(false)
+      })
+    return () => { active = false }
+  }, [])
 
   useEffect(() => {
     let active = true
@@ -92,6 +112,8 @@ function App() {
     if (!images.length) return
     setCurrentImage((previous) => (previous - 1 + images.length) % images.length)
   }
+
+  const locationOptions = [...new Set(properties.map((property) => property.location).filter(Boolean))]
 
   const filteredProperties = properties.filter((property) => {
     const locationMatches =
@@ -273,7 +295,7 @@ function App() {
             </div>
           </div>
           <div className="hero-search">
-            <div className="search-field"><MapPin size={19} /><div><label>Location</label><select value={location} onChange={(event) => setLocation(event.target.value)}><option>Any Location</option><option>Lekki</option><option>Ikoyi</option><option>Sangotedo</option></select></div><ChevronDown size={16} /></div>
+            <div className="search-field"><MapPin size={19} /><div><label>Location</label><select value={location} onChange={(event) => setLocation(event.target.value)}><option>Any Location</option>{locationOptions.map((item) => <option key={item}>{item}</option>)}</select></div><ChevronDown size={16} /></div>
             <div className="search-divider" />
             <div className="search-field"><Home size={19} /><div><label>Property Type</label><select value={propertyType} onChange={(event) => setPropertyType(event.target.value)}><option>Any Property</option><option>House</option><option>Apartment</option><option>Land</option></select></div><ChevronDown size={16} /></div>
             <button className="search-button" onClick={() => scrollToSection('properties')}><Search size={19} />Search</button>
@@ -325,7 +347,9 @@ function App() {
 
           <div className="property-results-bar"><span><strong>{filteredProperties.length}</strong> {filteredProperties.length === 1 ? 'Property' : 'Properties'} Available</span>{hasActiveFilters && <span className="filtered-label">Filtered results</span>}</div>
 
-          {filteredProperties.length > 0 ? (
+          {propertiesLoading ? (
+            <div className="no-results"><Search size={30} /><h3>Loading properties</h3><p>We're loading the latest available property opportunities.</p></div>
+          ) : filteredProperties.length > 0 ? (
             <div className="property-grid">
               {filteredProperties.map((property) => {
                 const image = property.images?.[0] || property.image
