@@ -4,9 +4,9 @@ import { ADMIN_EMAIL, supabase } from '../lib/supabase'
 import MediaUploader from './MediaUploader'
 import './AdminPage.css'
 
-const emptyVehicle={title:'',make:'',model:'',year:new Date().getFullYear(),condition:'Foreign Used',price:'',location:'Lagos, Nigeria',mileage:0,transmission:'Automatic',fuel_type:'Petrol',body_type:'SUV',images:[],video_url:'',description:'',features:''}
-const rowToForm=(r)=>({...r,images:Array.isArray(r.images)?r.images:[],features:Array.isArray(r.features)?r.features.join('\n'):'',video_url:r.video_url||''})
-const formToRow=(f)=>({title:f.title.trim(),make:f.make.trim(),model:f.model.trim(),year:Number(f.year),condition:f.condition,price:f.price.trim(),location:f.location.trim(),mileage:Number(f.mileage||0),transmission:f.transmission,fuel_type:f.fuel_type,body_type:f.body_type,images:f.images.filter(Boolean),video_url:f.video_url.trim()||null,description:f.description.trim(),features:f.features.split('\n').map(v=>v.trim()).filter(Boolean)})
+const emptyVehicle={title:'',make:'',model:'',year:new Date().getFullYear(),condition:'Foreign Used',price:'',location:'Lagos, Nigeria',mileage:0,transmission:'Automatic',fuel_type:'Petrol',body_type:'SUV',images:[],cover_image:'',video_url:'',description:'',features:''}
+const rowToForm=(r)=>({...r,cover_image:r.cover_image||'',images:Array.isArray(r.images)?r.images:[],features:Array.isArray(r.features)?r.features.join('\n'):'',video_url:r.video_url||''})
+const formToRow=(f)=>({title:f.title.trim(),make:f.make.trim(),model:f.model.trim(),year:Number(f.year),condition:f.condition,price:f.price.trim(),location:f.location.trim(),mileage:Number(f.mileage||0),transmission:f.transmission,fuel_type:f.fuel_type,body_type:f.body_type,images:f.images.filter(Boolean),cover_image:f.images.length?f.images[f.images.length-1]:(f.cover_image||null),video_url:f.video_url.trim()||null,description:f.description.trim(),features:f.features.split('\n').map(v=>v.trim()).filter(Boolean)})
 
 function AutosAdmin(){
  const [session,setSession]=useState(null),[email,setEmail]=useState(ADMIN_EMAIL),[password,setPassword]=useState(''),[vehicles,setVehicles]=useState([]),[form,setForm]=useState(emptyVehicle),[editingId,setEditingId]=useState(null),[loading,setLoading]=useState(true),[saving,setSaving]=useState(false),[message,setMessage]=useState('')
