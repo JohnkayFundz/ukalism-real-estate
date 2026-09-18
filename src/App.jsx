@@ -17,7 +17,6 @@ import {
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { supabase } from './lib/supabase'
-import fallbackProperties from './data/properties'
 import './App.css'
 import './home-autos.css'
 
@@ -41,7 +40,7 @@ function App() {
   const [currentImage, setCurrentImage] = useState(0)
   const [autos, setAutos] = useState([])
   const [autosLoading, setAutosLoading] = useState(true)
-  const [properties, setProperties] = useState(fallbackProperties)
+  const [properties, setProperties] = useState([])
   const [propertiesLoading, setPropertiesLoading] = useState(true)
 
   useEffect(() => {
