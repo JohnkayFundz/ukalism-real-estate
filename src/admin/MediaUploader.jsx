@@ -108,7 +108,7 @@ export default function MediaUploader({ images = [], videoUrl = '', onImagesChan
             <div className="media-preview" key={`${url}-${index}`}>
               <img src={url} alt={`Listing photo ${index + 1}`} loading="lazy" />
               <button type="button" onClick={() => removeImage(index)} aria-label={`Remove photo ${index + 1}`}><Trash2 size={15} /></button>
-              {index === 0 && <span className="media-cover-badge"><CheckCircle2 size={12} /> Cover</span>}
+              {index === images.length - 1 && <span className="media-cover-badge"><CheckCircle2 size={12} /> Cover</span>}
             </div>
           ))}
         </div>
@@ -122,7 +122,7 @@ export default function MediaUploader({ images = [], videoUrl = '', onImagesChan
       )}
 
       {(status || error) && <div className={error ? 'media-status error' : 'media-status success'}>{error || status}</div>}
-      <small className="media-help">Images up to 15MB each. Videos up to 100MB. The first photo becomes the listing cover.</small>
+      <small className="media-help">Images up to 15MB each. Videos up to 100MB. The last uploaded photo becomes the listing cover.</small>
     </div>
   )
 }
