@@ -337,3 +337,12 @@
 .admin-dashboard-card p{margin:0 0 22px;color:#64748b;line-height:1.7}
 .admin-dashboard-link{font-weight:700;color:#0f172a}
 @media (max-width:760px){.admin-dashboard-grid{grid-template-columns:1fr;gap:16px}.admin-dashboard-card{padding:26px}.admin-dashboard-card h2{font-size:25px}}
+
+
+.property-admin-media-fallback{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#506057;text-align:center;background:linear-gradient(135deg,#eef2ef,#e2e9e4)}
+.property-admin-media-fallback strong{font-size:12px;letter-spacing:.12em}
+.property-admin-media-fallback span{font-size:11px}
+.property-admin-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.property-admin-meta em{font-style:normal;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:5px 7px;border-radius:7px;background:#edf8f1;color:#285c40}
+.property-admin-details{display:flex;flex-wrap:wrap;gap:7px;margin:-5px 0 15px}
+.property-admin-details span{font-size:11px;color:#66746b;background:#f3f6f3;border-radius:7px;padding:5px 7px}
