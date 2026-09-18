@@ -46,7 +46,7 @@ function App() {
     let active = true
     supabase
       .from('vehicles')
-      .select('id,title,make,model,year,condition,price,location,mileage,transmission,fuel_type,body_type,images')
+      .select('id,title,make,model,year,condition,price,location,mileage,transmission,fuel_type,body_type,images,cover_image')
       .order('id', { ascending: false })
       .limit(3)
       .then(({ data }) => {
@@ -363,7 +363,7 @@ function App() {
             </div>
           ) : autos.length ? (
             <div className="home-autos-grid">
-              {autos.map((vehicle) => { const coverImage = vehicle.images?.length ? vehicle.images[vehicle.images.length - 1] : null; return (
+              {autos.map((vehicle) => { const coverImage = vehicle.cover_image || (vehicle.images?.length ? vehicle.images[vehicle.images.length - 1] : null); return (
                 <article className="home-auto-card" key={vehicle.id}>
                   <div className="home-auto-image">
                     {coverImage ? <img src={coverImage} alt={vehicle.title} loading="lazy" /> : <CarFront size={42} />}
